@@ -74,3 +74,14 @@ pennies = int(input("enter the number of Pennies as an integer"))
 # variable that holds the total value of all the coins the user put into the vending machine.
 
 total = quarters * .25 + dimes * .10 + nickels * .05 + pennies * .01
+
+# 4.
+
+if total >= thisPrice:
+    # the .2 in %2f means that the float is replacing the %f placeholder will be displayed to the 2 places after the 
+    # decimal place (eg 0.00).  the (total - thisPrice) gets the user's change by getting the difference if the amount 
+    # the user put in and the cost of the item they ordered form the vending machine. 
+    print("Your change is $" + "%.2f" % (total - thisPrice) + ". Have a nice day")
+else: 
+    # prints "Please try again." if total < thisPrice
+    print("Please try again.")
