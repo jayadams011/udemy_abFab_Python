@@ -55,3 +55,15 @@ elif order == 3:
 else:
     #ends the program and prints the message "Please try again." if order does not equal 1, 2, or 3
 sys.exit("Please try again")
+
+
+
+# 2.
+
+# the amount of each coin the user puts in: note that int() is used to conver the user's input (which is a string) to 
+# and integer
+
+quaters = int(input("Enter the number of quarters as an integer."))
+dimes = int(input("Enter the number of dimes as an integer."))
+nickels = int(input("Enter the number of nickels as an integer"))
+pennies = int(input("enter the number of Pennies as an integer"))
