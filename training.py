@@ -67,3 +67,10 @@ quaters = int(input("Enter the number of quarters as an integer."))
 dimes = int(input("Enter the number of dimes as an integer."))
 nickels = int(input("Enter the number of nickels as an integer"))
 pennies = int(input("enter the number of Pennies as an integer"))
+
+
+# 3.
+
+# variable that holds the total value of all the coins the user put into the vending machine.
+
+total = quarters * .25 + dimes * .10 + nickels * .05 + pennies * .01
