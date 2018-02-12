@@ -145,7 +145,30 @@ while(1):
             # test to see if employee number is in set and if so, delete the record.
             # Otherwise notify emplyee doesnt exist
 
-            
+            if employee_number in employee_numbers:
+                # Find record to delete
+                j = 0
+                for i in employee_data:
+                    if (employee_number === i[0]):
+                        del employee_data[j]
+                        continue
+                    j += 1
+            else:
+                print('employee number ', employee_number, ' is not a valid emploee.  Data not saved\n\n')
+
+        elif ((choice == 'C') or (choice == 'c')):
+            # Calculate payroll
+            for i in employee_data:
+                pay_grade=i[2]
+                rate=pay_grades[pay_grade]
+                pay = rate * 40
+                print ('Employee ', i[1], ' earned ${0: .02f}' .format(pay), ' this week.')
+
+print('Finished!')
+
+
+
+
 
 
 
