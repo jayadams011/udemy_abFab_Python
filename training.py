@@ -1,87 +1,52 @@
-"""
-For this problem you are going to make a program that simulates the output of a vending machine that only takes in
-coins of American currency.
-1.Your program should take an integer as an input from the user (either a 1, 2, or 3) that corresponds with an option
- for a drink from the vending machine outlined below and assign the corresponding price to a variable as a float.
- Use your knowledge of if, elif, and else statements to complete this part of the problem. Your code should
- have an else statement that prints a message and ends the program using sys.exit() if the user does not enter a valid
- input number.
- Vending Machine:
- 1.water = $1.00
- 2.cola = $1.50
- 3.gatorade = $2.00
-2.After placing an order, the user should be prompted to enter inputs 4 times:
- 1.The first time, the user should be prompted to enter the number of quarters they put in the machine. Assign this
- number to a variable as an integer.
- 2.The second time, the user should be prompted to enter the number of dimes they put in the machine. Assign this
- number to a variable as an integer.
- 3.The third time, the user should be prompted to enter the number of nickles they put in the machine. Assign this
- number to a variable as an integer.
- 4.The fourth time, the user should be prompted to enter the number of pennies they put in the machine. Assign this
- number to a variable as an integer.
-3.Create a variable to hold the total value of all the coins the user has put into the machine.
-4.Use flow control statements to print the user's change or output a message asking the user to try again depending
- on whether the total value of the coins the user has put into the machine is enough to pay for the item they ordered.
-New knowledge for this problem:
-1.%f specifier works like the %s specifier except that %f is used whenever you want to replace a placeholder with a
- float instead of a string.
-2.import sys and sys.exit(). import sys should be typed at the top of your program since you must have the code
-import
- sys in your program to use sys.exit(). sys.exit() ends a program and outputs whatever message is within its
- parentheses.
-3.int() works similarly to str() except that int() turns whatever is in its parenthesis to an integer instead of a
- string
+""" 
+allow initial entry of employees.  
+employee name
+employee number
+pay grade 
+
+add new employee
+edit employee 
+delete employee 
+print list of all employees
+calculate payroll for all employees
 """
 
-# 1.
+pay_grades={'a1':10.95,'b2':8.95,'c3':7.75,'d4':6.65} #establishes a "dict" of key pairs.
 
-# must have import sys in program to use sys.exit()
+employee_data=[]
 
-import sys
+employee_numbers=set() #for testing for employee numbers
 
-# asks the user to enter their input as an integer with 1 corresponding to water, 2 corresponding to cola, and 3
-# corresponding to gatorade.  Note that int() is used to change the user's input (shich is a string) to an integer.
-order = int(input("Enter your order number as an integer.(1,2,or3)"))
+while(1):
+    employee_number = input('enter an employee number -->')
+    employee_name = input('enter an employee name -->')
+    pay_grade = input('enter employee grade (a1,b2,c3,d4) -->')
 
-if order == 1:
-    #water is $1.00, thus a varible, thisPrice is created and assigned 1.00 if the user enters 1 for water
-    thisPrice = 1.00
-elif order == 2:
-    # cola is $1.50
-    thisPrice = 1.50
-elif order == 3:
-    # gatorade is $2.00
-    thisPrice = 2.00
-else:
-    #ends the program and prints the message "Please try again." if order does not equal 1, 2, or 3
-    sys.exit("Please try again")
+    #test for employee number and name to have values
+    if not(employee_number):
+        print('You didn\'t enter an employee number.  Please reenter data. \n\n')
+        continue
+
+    if not(employee_name):
+        print('You didn\'t enter an employee name.  Please reenter data. \n\n')
+        continue
+
+    # make sure pay grade is valid. 
+    if not (pay_grades.get(pay_grade)):
+        print('Sorry... you entered an invalid pay grade.  Please reenter all data\n\n')
+        continue
+
+    # test ti see if employee is in set and if so, have a user reenter data
+    if employee_number in employee_numbers:
+        print ('Employee number ', employee_number, 'is already used.  Please reenter data. \n\n')
+        continue
+    else:
+        employee_numbers.add(employee_number)
+
+    done = input('Enter X if this is the last employee entry or hit Enter to enter the next employee -->')
 
 
 
-# 2.
-
-# the amount of each coin the user puts in: note that int() is used to conver the user's input (which is a string) to 
-# and integer
-
-quarters = int(input("Enter the number of quarters as an integer."))
-dimes = int(input("Enter the number of dimes as an integer."))
-nickels = int(input("Enter the number of nickels as an integer"))
-pennies = int(input("enter the number of Pennies as an integer"))
 
 
-# 3.
 
-# variable that holds the total value of all the coins the user put into the vending machine.
-
-total = quarters * .25 + dimes * .10 + nickels * .05 + pennies * .01
-
-# 4.
-
-if total >= thisPrice:
-    # the .2 in %2f means that the float is replacing the %f placeholder will be displayed to the 2 places after the 
-    # decimal place (eg 0.00).  the (total - thisPrice) gets the user's change by getting the difference if the amount 
-    # the user put in and the cost of the item they ordered form the vending machine. 
-    print("Your change is $" + "%.2f" % (total - thisPrice) + ". Have a nice day")
-else: 
-    # prints "Please try again." if total < thisPrice
-    print("Please try again.")
